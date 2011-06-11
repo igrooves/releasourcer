@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>{{ release.name }}</h1>
+<p>Due Date: {{ release.due_date }}</p>
+<p>Features:
+{% if release.feature_set.all %}
+    <ul>
+        {% for f in release.feature_set.all %}
+        <li>- <a href="{{ f.doc_link }}" title="{{ f.name }}">{{ f.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    There are no features assigned to this release
+{% endif %}
+</p>
+{% endblock %}

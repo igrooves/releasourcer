@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Upcoming Releases</h1>
+{% if inflight_releases %}
+
+    {% for r in inflight_releases %}
+    <div class="release">
+        <div class="release_info">
+            <a href="/releases/{{ r.id }}/" title="{{ r.name }}">{{ r.name }}</a> - {{ r.due_date }}
+        </div>
+
+        <div class="release_features">
+            {% if r.feature_set.all %}
+                <ul>
+                    {% for f in r.feature_set.all %}
+                    <li>- <a href="{{ f.doc_link }}" title="{{ f.name }}">{{ f.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>There are no upcoming releases!</p>
+{% endif %}
+
+<div class="clear"></div>
+
+{% endblock %}

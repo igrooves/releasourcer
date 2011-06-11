@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href="/static/css/style-wallboard.css" media="screen" rel="stylesheet" type="text/css" />
+    <title>{% block title %}Releasourcer{% endblock %}</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="main">
+            {% block main %}{% endblock %}
+        </div>
+
+        <div id="footer">
+            Copyright &copy; {% now "Y" %} <a href="/" title="Releasourcer">Releasourcer</a>
+        </div>
+    </div>
+</body>
+</html>

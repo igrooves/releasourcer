@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="Releasourcer" basedir=".">
+
+    <!-- Include the default properties -->
+    <property file="default.properties" />
+
+    <target name="clean" >
+        <delete dir="${basedir}/data" />
+        <mkdir dir="${basedir}/data" />
+    </target>
+
+    <target name="create-db">
+        <echo>Creating the database</echo>
+        <exec executable="python" dir="${basedir}">
+            <arg line="manage.py syncdb --noinput" />
+        </exec>
+        <echo>Creating ${superuser.name}</echo>
+        <exec executable="python" dir="${basedir}">
+            <arg line="manage.py createsuperuser --username=${superuser.name} --email=${superuser.email}" />
+        </exec>
+    </target>
+
+    <!-- Runners -->
+    <!--         -->
+    <!-- Install application -->
+    <target name="install" depends="clean,create-db" />
+</project>
